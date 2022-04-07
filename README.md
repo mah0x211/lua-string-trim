@@ -1,37 +1,74 @@
 # lua-string-trim
 
-strip the space at both ends of string.
+[![test](https://github.com/mah0x211/lua-string-trim/actions/workflows/test.yml/badge.svg)](https://github.com/mah0x211/lua-string-trim/actions/workflows/test.yml)
+[![codecov](https://codecov.io/gh/mah0x211/lua-string-trim/branch/master/graph/badge.svg)](https://codecov.io/gh/mah0x211/lua-string-trim)
 
----
+trims the specified string or spaces from the string.
+
 
 ## Installation
 
 ```sh
-luarocks install string-trim --from=http://mah0x211.github.io/rocks/
+luarocks install string-trim
 ```
 
-## Function
-
-### str = trim( str )
-
-returns the string stripped of whitespace from both ends.
-
-**Parameters**
-
-- `str:string`: string.
-
-**Returns**
-
-- `str:string`: string.
+---
 
 
 ## Usage
 
 ```lua
 local trim = require('string.trim')
--- you must install dump module from https://github.com/mah0x211/lua-dump 
--- or luarocks install dump
-local dump = require('dump') 
 
-print( dump( trim('    hello world!      ') ) )
--- "hello world!"
+print(trim('    hello world!      '))
+-- hello world!
+
+print(trim.prefix('hello world!', 'hell'))
+-- o world!
+
+print(trim.suffix('hello world!', 'o world!'))
+-- hell
+```
+
+
+
+## s = trim( s )
+
+returns `s` with all leading and trailing `whitespace` removed.
+
+**Params**
+
+- `s:string`: a string.
+
+**Returns**
+
+- `s:string`: result string.
+
+
+## s = trim.prefix( s, prefix )
+
+returns `s` with the `prefix` removed.
+
+**Params**
+
+- `s:string`: a string.
+- `prefix:string`: prefix string.
+
+**Returns**
+
+- `s:string`: result string.
+
+
+## s = trim.suffix( s, suffix )
+
+returns `s` with the `suffix` removed.
+
+**Params**
+
+- `s:string`: string.
+- `suffix:string`: suffix string.
+
+**Returns**
+
+- `s:string`: result string.
+
